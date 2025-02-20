@@ -9,6 +9,7 @@ import {
 
 router.post("/", addFoodItem);
 
-router.put("/:id", editFoodItem).delete("/:id", deleteFoodItem);
+router.put("/:id", editFoodItem);
+router.delete("/:id", deleteFoodItem);
 
 export default router;

@@ -17,8 +17,8 @@ app.get("/", (req, res) => {
 });
 
 // all users routes
-app.use("api/food-items", foodRoutes);
-app.use("api/meal-logs", mealRoutes);
+app.use("/api/food-items", foodRoutes);
+app.use("/api/meal-logs", mealRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost:${PORT}`);

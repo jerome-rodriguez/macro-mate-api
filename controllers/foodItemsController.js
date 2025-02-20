@@ -103,7 +103,7 @@ const editFoodItem = async (req, res) => {
 
 const deleteFoodItem = async (req, res) => {
   try {
-    const { id } = requestAnimationFrame.params;
+    const { id } = req.params;
     const data = await knex("food_items").where({ id }).first();
 
     if (!data) {

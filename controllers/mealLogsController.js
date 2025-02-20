@@ -22,7 +22,7 @@ const getMealLog = async (req, res) => {
 
 const deleteMealLog = async (req, res) => {
   try {
-    const { id } = requestAnimationFrame.params;
+    const { id } = req.params;
     const data = await knex("meal_logs").where({ id }).first();
 
     await knex("food_items").where({ id }).del();

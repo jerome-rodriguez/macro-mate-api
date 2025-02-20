@@ -5,7 +5,7 @@ import {
   getAllMealLogs,
   getMealLog,
   deleteMealLog,
-} from "../controllers/foodItemsController.js";
+} from "../controllers/mealLogsController.js";
 
 router.get("/", getAllMealLogs);
 
