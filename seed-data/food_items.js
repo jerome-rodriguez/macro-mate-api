@@ -6,6 +6,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
+    amount: 100,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
+    amount: 200,
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
   },
   {
     id: 6,
@@ -46,6 +51,7 @@ export default [
     protein: 2.7,
     carbs: 28,
     fat: 0.3,
+    amount: 150,
   },
   {
     id: 7,
@@ -54,6 +60,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
   },
   {
     id: 8,
@@ -62,6 +69,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
   },
   {
     id: 9,
@@ -70,6 +78,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
   },
   {
     id: 10,
@@ -78,6 +87,7 @@ export default [
     protein: 0.9,
     carbs: 1.1,
     fat: 0.1,
+    amount: 100,
   },
   {
     id: 11,
@@ -86,6 +96,7 @@ export default [
     protein: 10,
     carbs: 6,
     fat: 0,
+    amount: 150,
   },
   {
     id: 12,
@@ -94,5 +105,6 @@ export default [
     protein: 5,
     carbs: 27,
     fat: 3,
+    amount: 100,
   },
 ];
