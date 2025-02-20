@@ -1,16 +1,14 @@
-import initKnex from "knex";
-import configuration from "../knexfile.js";
-const knex = initKnex(configuration);
 import express from "express";
 const router = express.Router();
 
-router.get("/", async (_req, res) => {
-  try {
-    const data = await knex("food_items");
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(400).send(`Error retrieving Users: ${err}`);
-  }
-});
+import {
+  addFoodItem,
+  editFoodItem,
+  deleteFoodItem,
+} from "../controllers/foodItemsController.js";
+
+router.post("/", addFoodItem);
+
+router.put("/:id", editFoodItem).delete("/:id", deleteFoodItem);
 
 export default router;
