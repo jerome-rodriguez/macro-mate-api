@@ -9,6 +9,8 @@ import {
 
 router.get("/", getAllMealLogs);
 
-router.get("/:id", getMealLog).delete("/:id", deleteMealLog);
+router.get("/:date", getMealLog);
+
+router.delete("/:date", deleteMealLog);
 
 export default router;

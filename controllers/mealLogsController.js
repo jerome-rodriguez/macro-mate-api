@@ -13,7 +13,7 @@ const getAllMealLogs = async (_req, res) => {
 
 const getMealLog = async (req, res) => {
   try {
-    const data = await knex("meal_logs").where({ id: req.params.id }).first();
+    const data = await knex("meal_logs").where({ date: req.params.date });
     res.status(200).json(data);
   } catch (err) {
     res.status(400).send(`Error retrieving meal log: ${err}`);
@@ -22,10 +22,10 @@ const getMealLog = async (req, res) => {
 
 const deleteMealLog = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = await knex("meal_logs").where({ id }).first();
+    const { date } = req.params;
+    const data = await knex("meal_logs").where({ date: req.params.date });
 
-    await knex("food_items").where({ id }).del();
+    await knex("meal_logs").where({ date }).del();
 
     res.status(200).json(data);
   } catch (err) {
