@@ -1,5 +1,5 @@
 export function up(knex) {
-  return knex.schema.createTable("dinner_logs", function (table) {
+  return knex.schema.createTable("meal_logs", function (table) {
     table.increments("id").primary();
     table
       .integer("food_id")
@@ -8,6 +8,7 @@ export function up(knex) {
       .inTable("food_items")
       .onDelete("CASCADE");
     table.string("name").notNullable();
+    table.enu("meal_type", ["Breakfast", "Lunch", "Dinner"]).notNullable(); // Add meal_type column
     table.integer("calories").notNullable();
     table.float("protein").notNullable();
     table.float("carbs").notNullable();
@@ -18,5 +19,5 @@ export function up(knex) {
 }
 
 export function down(knex) {
-  return knex.schema.dropTable("dinner_logs");
+  return knex.schema.dropTable("meal_logs"); // Drop the combined table
 }
