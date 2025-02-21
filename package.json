@@ -16,10 +16,15 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google-cloud/vision": "^4.3.2",
+    "@google/generative-ai": "^0.22.0",
     "axios": "^1.7.9",
+    "cloudinary": "^2.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "formidable": "^3.5.2",
+    "fs-extra": "^11.3.0",
     "knex": "^3.1.0",
     "mysql2": "^3.12.0"
   },

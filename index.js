@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5050;
 import foodRoutes from "./routes/food_items.js";
 import mealRoutes from "./routes/meal_logs.js";
 import searchRoutes from "./routes/food_search.js";
+import visionRoutes from "./routes/google_vision.js";
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 app.use("/api/food-items", foodRoutes);
 app.use("/api/meal-logs", mealRoutes);
 app.use("/api/search", searchRoutes);
+app.use("/api/vision", visionRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost:${PORT}`);
