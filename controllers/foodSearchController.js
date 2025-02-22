@@ -2,10 +2,10 @@ import initKnex from "knex";
 import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 import axios from "axios";
+const API_URL = process.env.EDAMAM_API_URL;
 
 // Search food from Edamam API
 const searchFoodItem = async (req, res) => {
-  const API_URL = process.env.EDAMAM_API_URL;
   try {
     const { query } = req.query;
     const response = await axios.get(`${API_URL}/api/food-database/v2/parser`, {
@@ -29,6 +29,33 @@ const searchFoodItem = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch food data" });
   }
 };
+
+// const parseFoodDescription = async (req, res) => {
+//   try {
+//     const { query } = req.query; // Expecting a full sentence like "2 slices of bread with peanut butter"
+//     const response = await axios.get(`${API_URL}/api/food-database/v2/parser`, {
+//       params: {
+//         app_id: process.env.EDAMAM_API_ID,
+//         app_key: process.env.EDAMAM_API_KEY,
+//         ingr: query, // NLP food description
+//       },
+//     });
+
+//     const foods = response.data.hints.map((item) => ({
+//       name: item.food.label,
+//       quantity: item.measures?.[0]?.quantity || 1, // Extracts quantity if available
+//       unit: item.measures?.[0]?.label || "unit", // Extracts unit if available
+//       calories: item.food.nutrients.ENERC_KCAL || 0,
+//       protein: item.food.nutrients.PROCNT || 0,
+//       carbs: item.food.nutrients.CHOCDF || 0,
+//       fat: item.food.nutrients.FAT || 0,
+//     }));
+
+//     res.json(foods);
+//   } catch (error) {
+//     res.status(500).json({ error: "Failed to parse food data" });
+//   }
+// };
 
 const addFoodItem = async (req, res) => {
   try {

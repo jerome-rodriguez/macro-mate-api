@@ -1,4 +1,4 @@
-import mealData from "../seed-data/meal_logs.js";
+import mealData from "../seed_data/meal_logs.js";
 
 export async function seed(knex) {
   await knex("meal_logs").del();

@@ -3,28 +3,51 @@ import configuration from "../knexfile.js";
 const knex = initKnex(configuration);
 
 const addFoodItem = async (req, res) => {
-  const { name, calories, protein, carbs, fat, amount } = req.body;
+  const { name, calories, protein, carbs, fat, amount, mealType } = req.body;
 
-  if (!name || !calories || !protein || !carbs || !fat || !amount) {
+  if (
+    !name ||
+    !calories ||
+    !protein ||
+    !carbs ||
+    !fat ||
+    !amount ||
+    !mealType
+  ) {
     return res.status(400).json({ error: "All fields are required." });
   }
 
   try {
-    const addFoodItemId = await knex("food_items").insert({
+    // Step 1: Insert food item into `food_logs` table
+    const foodLogId = await knex("food_items").insert({
       name,
       calories,
       protein,
       carbs,
       fat,
-      amount,
+      amount, // Store meal_type in food_logs table
     });
 
-    const newFoodItemId = addFoodItemId[0];
-    const addFoodItemFields = await knex("food_items").where({
-      id: newFoodItemId,
+    const newFoodLogId = foodLogId[0];
+
+    // Step 2: Insert the food item into `meal_logs` table with the food_log_id
+    await knex("meal_logs").insert({
+      name,
+      calories,
+      protein,
+      carbs,
+      fat,
+      food_id: newFoodLogId, // Link the food log to the meal log
+      meal_type: mealType, // Meal type, can be breakfast, lunch, dinner
+      date: new Date().toLocaleDateString("en-CA"), // Use current date for meal log
     });
 
-    res.status(200).json(addFoodItemFields);
+    // Step 3: Return the newly added food item (optional)
+    const addedFoodItem = await knex("food_items").where({
+      id: newFoodLogId,
+    });
+
+    res.status(200).json(addedFoodItem);
   } catch (err) {
     res.status(500).json({
       error: `Error adding food item: ${err.message}`,

@@ -1,6 +1,5 @@
 export default [
   {
-    id: 1,
     name: "Chicken Breast",
     calories: 165,
     protein: 31,
@@ -9,7 +8,6 @@ export default [
     amount: 200,
   },
   {
-    id: 2,
     name: "Avocado Toast",
     calories: 250,
     protein: 5,
@@ -18,7 +16,6 @@ export default [
     amount: 150,
   },
   {
-    id: 3,
     name: "Blueberries",
     calories: 85,
     protein: 1,
@@ -27,7 +24,6 @@ export default [
     amount: 100,
   },
   {
-    id: 4,
     name: "Sweet Potato",
     calories: 112,
     protein: 2,
@@ -36,7 +32,6 @@ export default [
     amount: 200,
   },
   {
-    id: 5,
     name: "Salmon",
     calories: 208,
     protein: 22,
@@ -45,7 +40,6 @@ export default [
     amount: 180,
   },
   {
-    id: 6,
     name: "Rice",
     calories: 130,
     protein: 2.7,
@@ -53,26 +47,9 @@ export default [
     fat: 0.3,
     amount: 150,
   },
+  { name: "Almonds", calories: 164, protein: 6, carbs: 6, fat: 14, amount: 30 },
+  { name: "Eggs", calories: 155, protein: 13, carbs: 1.1, fat: 11, amount: 50 },
   {
-    id: 7,
-    name: "Almonds",
-    calories: 164,
-    protein: 6,
-    carbs: 6,
-    fat: 14,
-    amount: 30,
-  },
-  {
-    id: 8,
-    name: "Eggs",
-    calories: 155,
-    protein: 13,
-    carbs: 1.1,
-    fat: 11,
-    amount: 50,
-  },
-  {
-    id: 9,
     name: "Chia Seeds",
     calories: 137,
     protein: 4.4,
@@ -81,7 +58,6 @@ export default [
     amount: 30,
   },
   {
-    id: 10,
     name: "Spinach",
     calories: 7,
     protein: 0.9,
@@ -90,7 +66,6 @@ export default [
     amount: 100,
   },
   {
-    id: 11,
     name: "Greek Yogurt",
     calories: 100,
     protein: 10,
@@ -99,7 +74,6 @@ export default [
     amount: 150,
   },
   {
-    id: 12,
     name: "Oatmeal",
     calories: 150,
     protein: 5,

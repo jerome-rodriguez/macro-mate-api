@@ -8,6 +8,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-12",
   },
   {
@@ -18,6 +19,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-12",
   },
   {
@@ -28,6 +30,7 @@ export default [
     protein: 5,
     carbs: 27,
     fat: 3,
+    amount: 100,
     date: "2025-02-12",
   },
   {
@@ -38,6 +41,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
+    amount: 200,
     date: "2025-02-12",
   },
   {
@@ -48,6 +52,7 @@ export default [
     protein: 2.7,
     carbs: 28,
     fat: 0.3,
+    amount: 150,
     date: "2025-02-12",
   },
   {
@@ -58,6 +63,7 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
     date: "2025-02-12",
   },
   {
@@ -68,6 +74,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-12",
   },
   {
@@ -78,6 +85,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-12",
   },
   {
@@ -88,6 +96,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-12",
   },
 
@@ -100,6 +109,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-13",
   },
   {
@@ -110,6 +120,7 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
+    amount: 100,
     date: "2025-02-13",
   },
   {
@@ -120,6 +131,7 @@ export default [
     protein: 5,
     carbs: 27,
     fat: 3,
+    amount: 100,
     date: "2025-02-13",
   },
   {
@@ -130,6 +142,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
+    amount: 200,
     date: "2025-02-13",
   },
   {
@@ -140,6 +153,7 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
     date: "2025-02-13",
   },
   {
@@ -150,6 +164,7 @@ export default [
     protein: 2.7,
     carbs: 28,
     fat: 0.3,
+    amount: 150,
     date: "2025-02-13",
   },
   {
@@ -160,6 +175,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-13",
   },
   {
@@ -170,6 +186,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-13",
   },
   {
@@ -180,6 +197,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-13",
   },
 
@@ -192,6 +210,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-14",
   },
   {
@@ -202,6 +221,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-14",
   },
   {
@@ -212,6 +232,7 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
+    amount: 100,
     date: "2025-02-14",
   },
   {
@@ -222,6 +243,7 @@ export default [
     protein: 2.7,
     carbs: 28,
     fat: 0.3,
+    amount: 150,
     date: "2025-02-14",
   },
   {
@@ -232,6 +254,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
+    amount: 200,
     date: "2025-02-14",
   },
   {
@@ -242,6 +265,7 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
     date: "2025-02-14",
   },
   {
@@ -252,6 +276,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-14",
   },
   {
@@ -262,6 +287,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-14",
   },
   {
@@ -272,6 +298,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-14",
   },
 
@@ -284,6 +311,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-15",
   },
   {
@@ -294,6 +322,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-15",
   },
   {
@@ -304,6 +333,7 @@ export default [
     protein: 5,
     carbs: 27,
     fat: 3,
+    amount: 100,
     date: "2025-02-15",
   },
   {
@@ -314,16 +344,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
-    date: "2025-02-15",
-  },
-  {
-    food_id: 5,
-    name: "Salmon",
-    meal_type: "Lunch",
-    calories: 208,
-    protein: 22,
-    carbs: 0,
-    fat: 13,
+    amount: 200,
     date: "2025-02-15",
   },
   {
@@ -334,6 +355,18 @@ export default [
     protein: 2.7,
     carbs: 28,
     fat: 0.3,
+    amount: 150,
+    date: "2025-02-15",
+  },
+  {
+    food_id: 5,
+    name: "Salmon",
+    meal_type: "Lunch",
+    calories: 208,
+    protein: 22,
+    carbs: 0,
+    fat: 13,
+    amount: 180,
     date: "2025-02-15",
   },
   {
@@ -344,6 +377,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-15",
   },
   {
@@ -354,6 +388,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-15",
   },
   {
@@ -364,6 +399,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-15",
   },
 
@@ -376,6 +412,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-16",
   },
   {
@@ -386,16 +423,18 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-16",
   },
   {
-    food_id: 12,
-    name: "Oatmeal",
+    food_id: 3,
+    name: "Blueberries",
     meal_type: "Breakfast",
-    calories: 150,
-    protein: 5,
-    carbs: 27,
-    fat: 3,
+    calories: 85,
+    protein: 1,
+    carbs: 21,
+    fat: 0,
+    amount: 100,
     date: "2025-02-16",
   },
   {
@@ -406,16 +445,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
-    date: "2025-02-16",
-  },
-  {
-    food_id: 6,
-    name: "Rice",
-    meal_type: "Lunch",
-    calories: 130,
-    protein: 2.7,
-    carbs: 28,
-    fat: 0.3,
+    amount: 200,
     date: "2025-02-16",
   },
   {
@@ -426,6 +456,18 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
+    date: "2025-02-16",
+  },
+  {
+    food_id: 6,
+    name: "Rice",
+    meal_type: "Lunch",
+    calories: 130,
+    protein: 2.7,
+    carbs: 28,
+    fat: 0.3,
+    amount: 150,
     date: "2025-02-16",
   },
   {
@@ -436,6 +478,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-16",
   },
   {
@@ -446,6 +489,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-16",
   },
   {
@@ -456,6 +500,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-16",
   },
 
@@ -468,6 +513,18 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
+    date: "2025-02-17",
+  },
+  {
+    food_id: 2,
+    name: "Avocado Toast",
+    meal_type: "Breakfast",
+    calories: 250,
+    protein: 5,
+    carbs: 22,
+    fat: 15,
+    amount: 150,
     date: "2025-02-17",
   },
   {
@@ -478,16 +535,7 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
-    date: "2025-02-17",
-  },
-  {
-    food_id: 12,
-    name: "Oatmeal",
-    meal_type: "Breakfast",
-    calories: 150,
-    protein: 5,
-    carbs: 27,
-    fat: 3,
+    amount: 100,
     date: "2025-02-17",
   },
   {
@@ -498,16 +546,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
-    date: "2025-02-17",
-  },
-  {
-    food_id: 6,
-    name: "Rice",
-    meal_type: "Lunch",
-    calories: 130,
-    protein: 2.7,
-    carbs: 28,
-    fat: 0.3,
+    amount: 200,
     date: "2025-02-17",
   },
   {
@@ -518,6 +557,18 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
+    date: "2025-02-17",
+  },
+  {
+    food_id: 6,
+    name: "Rice",
+    meal_type: "Lunch",
+    calories: 130,
+    protein: 2.7,
+    carbs: 28,
+    fat: 0.3,
+    amount: 150,
     date: "2025-02-17",
   },
   {
@@ -528,6 +579,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-17",
   },
   {
@@ -538,6 +590,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-17",
   },
   {
@@ -548,6 +601,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-17",
   },
 
@@ -560,6 +614,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-18",
   },
   {
@@ -570,6 +625,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-18",
   },
   {
@@ -580,16 +636,7 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
-    date: "2025-02-18",
-  },
-  {
-    food_id: 6,
-    name: "Rice",
-    meal_type: "Lunch",
-    calories: 130,
-    protein: 2.7,
-    carbs: 28,
-    fat: 0.3,
+    amount: 100,
     date: "2025-02-18",
   },
   {
@@ -600,6 +647,7 @@ export default [
     protein: 2,
     carbs: 26,
     fat: 0.2,
+    amount: 200,
     date: "2025-02-18",
   },
   {
@@ -610,6 +658,18 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
+    date: "2025-02-18",
+  },
+  {
+    food_id: 6,
+    name: "Rice",
+    meal_type: "Lunch",
+    calories: 130,
+    protein: 2.7,
+    carbs: 28,
+    fat: 0.3,
+    amount: 150,
     date: "2025-02-18",
   },
   {
@@ -620,6 +680,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-18",
   },
   {
@@ -630,6 +691,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-18",
   },
   {
@@ -640,6 +702,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-18",
   },
 
@@ -652,6 +715,7 @@ export default [
     protein: 31,
     carbs: 0,
     fat: 4,
+    amount: 200,
     date: "2025-02-19",
   },
   {
@@ -662,6 +726,7 @@ export default [
     protein: 5,
     carbs: 22,
     fat: 15,
+    amount: 150,
     date: "2025-02-19",
   },
   {
@@ -672,16 +737,18 @@ export default [
     protein: 1,
     carbs: 21,
     fat: 0,
+    amount: 100,
     date: "2025-02-19",
   },
   {
-    food_id: 6,
-    name: "Rice",
+    food_id: 4,
+    name: "Sweet Potato",
     meal_type: "Lunch",
-    calories: 130,
-    protein: 2.7,
-    carbs: 28,
-    fat: 0.3,
+    calories: 112,
+    protein: 2,
+    carbs: 26,
+    fat: 0.2,
+    amount: 200,
     date: "2025-02-19",
   },
   {
@@ -692,6 +759,18 @@ export default [
     protein: 22,
     carbs: 0,
     fat: 13,
+    amount: 180,
+    date: "2025-02-19",
+  },
+  {
+    food_id: 6,
+    name: "Rice",
+    meal_type: "Lunch",
+    calories: 130,
+    protein: 2.7,
+    carbs: 28,
+    fat: 0.3,
+    amount: 150,
     date: "2025-02-19",
   },
   {
@@ -702,6 +781,7 @@ export default [
     protein: 6,
     carbs: 6,
     fat: 14,
+    amount: 30,
     date: "2025-02-19",
   },
   {
@@ -712,6 +792,7 @@ export default [
     protein: 13,
     carbs: 1.1,
     fat: 11,
+    amount: 50,
     date: "2025-02-19",
   },
   {
@@ -722,6 +803,7 @@ export default [
     protein: 4.4,
     carbs: 12,
     fat: 9,
+    amount: 30,
     date: "2025-02-19",
   },
 ];
