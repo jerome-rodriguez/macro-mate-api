@@ -5,7 +5,7 @@ import {
   addFoodItem,
   searchFoodItem,
   // parseFoodDescription,
-} from "../controllers/foodSearchController.js";
+} from "../controllers/food_search_controller.js";
 
 router.get("/search", searchFoodItem);
 

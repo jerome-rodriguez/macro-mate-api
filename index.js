@@ -5,10 +5,10 @@ const app = express();
 
 const PORT = process.env.PORT || 5050;
 
-import foodRoutes from "./routes/food_items.js";
-import mealRoutes from "./routes/meal_logs.js";
-import searchRoutes from "./routes/food_search.js";
-import visionRoutes from "./routes/google_vision.js";
+import foodRoutes from "./routes/food_items_route.js";
+import mealRoutes from "./routes/meal_logs_route.js";
+import searchRoutes from "./routes/food_search_route.js";
+import visionRoutes from "./routes/google_vision_route.js";
 
 app.use(cors());
 app.use(express.json());

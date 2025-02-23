@@ -27,7 +27,7 @@ const getMacrosFromAI = async (foodLabel) => {
             role: "user",
             parts: [
               {
-                text: `Give me the estimated macronutrients for a single serving of ${foodLabel} in JSON format. Provide values for calories, protein (g), carbs (g), and fat (g). Do NOT include any other text, just JSON output.`,
+                text: `Give me the estimated macronutrients for 100 grams (g) of ${foodLabel} in JSON format. Provide values for calories, protein (g), carbs (g), and fat (g). Do NOT include any other text, just JSON output.`,
               },
             ],
           },
@@ -168,6 +168,7 @@ const uploadFoodImg = async (req, res) => {
           protein: macros.protein,
           carbs: macros.carbs,
           fat: macros.fat,
+          amount: 100,
         });
 
         foodId = newFood[0];
@@ -182,6 +183,7 @@ const uploadFoodImg = async (req, res) => {
         protein: macros.protein, // ✅ Add macros
         carbs: macros.carbs, // ✅ Add macros
         fat: macros.fat, // ✅ Add macros
+        amount: 100,
         date: knex.fn.now(),
       });
 
