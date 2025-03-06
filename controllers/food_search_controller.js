@@ -42,6 +42,18 @@ const addFoodItem = async (req, res) => {
       mealType,
     } = req.body;
 
+    // Define valid meal types
+    const validMealTypes = ["breakfast", "lunch", "dinner"];
+
+    // Validate mealType
+    if (!validMealTypes.includes(mealType)) {
+      return res.status(400).json({
+        error: `Invalid meal type. Allowed values are: ${validMealTypes.join(
+          ", "
+        )}`,
+      });
+    }
+
     // Check if the food item already exists in the food_items table
     let food = await knex("food_items").where({ name }).first();
 
