@@ -42,6 +42,21 @@ const addFoodItem = async (req, res) => {
       mealType,
     } = req.body;
 
+    // Trim and convert mealType to lowercase
+    const mealTypeTrimmed = mealType ? mealType.trim().toLowerCase() : "";
+
+    // Define valid meal types
+    const validMealTypes = ["breakfast", "lunch", "dinner"];
+
+    // Check if mealType is valid
+    if (!validMealTypes.includes(mealTypeTrimmed)) {
+      return res.status(400).json({
+        error: `Invalid meal type. Allowed values are: ${validMealTypes.join(
+          ", "
+        )}`,
+      });
+    }
+
     // Check if the food item already exists in the food_items table
     let food = await knex("food_items").where({ name }).first();
 
@@ -70,7 +85,7 @@ const addFoodItem = async (req, res) => {
       carbs: food.carbs,
       fat: food.fat,
       amount,
-      meal_type: mealType,
+      meal_type: mealTypeTrimmed, // Use the validated and trimmed meal type
       date: new Date().toISOString().split("T")[0], // Format as YYYY-MM-DD
     });
 
