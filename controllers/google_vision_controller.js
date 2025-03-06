@@ -13,7 +13,7 @@ const client = new vision.ImageAnnotatorClient({
   keyFilename: process.env.GOOGLE_API_CREDENTIALS,
 });
 
-// ✅ Function to Get Macros from Google Gemini API
+// Function to Get Macros from Google Gemini API
 const getMacrosFromAI = async (foodLabel) => {
   try {
     console.log(`🔍 Asking AI for macros of: ${foodLabel}`);
@@ -58,7 +58,7 @@ const getMacrosFromAI = async (foodLabel) => {
   }
 };
 
-// ✅ Upload Food Image and Process with Cloudinary, Vision API, and Gemini AI
+// Upload Food Image and Process with Cloudinary, Vision API, and Gemini AI
 const uploadFoodImg = async (req, res) => {
   try {
     const form = formidable({ multiples: false });
@@ -78,7 +78,7 @@ const uploadFoodImg = async (req, res) => {
       const imagePath = imageFile.filepath;
       console.log("✅ File Received:", imagePath);
 
-      // ✅ Upload to Cloudinary
+      // Upload to Cloudinary
       let uploadResult;
       try {
         console.log("🔍 Uploading file to Cloudinary:", imagePath);
@@ -93,7 +93,7 @@ const uploadFoodImg = async (req, res) => {
       const imageUrl = uploadResult.secure_url;
       console.log("✅ Cloudinary Upload Success:", imageUrl);
 
-      // ✅ Send Image URL to Google Vision API
+      // Send Image URL to Google Vision API
       let highestTopicalityLabel;
       try {
         const response = await axios.post(
@@ -127,7 +127,7 @@ const uploadFoodImg = async (req, res) => {
 
       const mealType = fields.mealType;
 
-      // ✅ Get Macros from Google Gemini AI
+      // Get Macros from Google Gemini AI
       let macros;
       try {
         macros = await getMacrosFromAI(highestTopicalityLabel);
@@ -139,7 +139,7 @@ const uploadFoodImg = async (req, res) => {
 
       console.log("✅ Macros:", macros);
 
-      // ✅ Check if food item already exists in `food_items`
+      // Check if food item already exists in `food_items`
       let foodId;
       const existingFood = await knex("food_items")
         .where({ name: highestTopicalityLabel })
@@ -157,19 +157,19 @@ const uploadFoodImg = async (req, res) => {
             fat: macros.fat,
             amount: 100,
           })
-          .returning("id"); // ✅ Correctly returning the new food item's ID
+          .returning("id");
         foodId = newFood.id;
       }
 
-      // ✅ Insert food into `meal_logs`
+      // Insert food into `meal_logs`
       await knex("meal_logs").insert({
         food_id: foodId,
-        name: highestTopicalityLabel, // ✅ Add food name
-        meal_type: mealType, // ✅ Ensure meal type is provided
-        calories: macros.calories, // ✅ Add macros
-        protein: macros.protein, // ✅ Add macros
-        carbs: macros.carbs, // ✅ Add macros
-        fat: macros.fat, // ✅ Add macros
+        name: highestTopicalityLabel,
+        meal_type: mealType, // Make sure this is a string
+        calories: macros.calories,
+        protein: macros.protein,
+        carbs: macros.carbs,
+        fat: macros.fat,
         amount: 100,
         date: knex.fn.now(),
       });
@@ -179,20 +179,13 @@ const uploadFoodImg = async (req, res) => {
         success: true,
         imageUrl,
         label: highestTopicalityLabel,
-        macros,
         mealType,
-      });
-
-      // ✅ Delete local file after upload
-      fs.unlink(imagePath, (unlinkError) => {
-        if (unlinkError)
-          console.error("❌ Error deleting temp file:", unlinkError);
-        else console.log("🗑️ Temp file deleted successfully:", imagePath);
+        macros,
       });
     });
   } catch (error) {
-    console.error("❌ General Server Error:", error);
-    res.status(500).json({ error: "Error processing image" });
+    console.error("❌ Error in uploadFoodImg:", error);
+    res.status(500).json({ error: "Server error during food image upload" });
   }
 };
 
