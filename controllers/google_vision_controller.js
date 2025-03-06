@@ -35,10 +35,8 @@ const getMacrosFromAI = async (foodLabel) => {
       }
     );
 
-    // 🔍 Debugging API Response
     console.log("🔍 AI Full Response:", JSON.stringify(response.data, null, 2));
 
-    // ✅ Extracting JSON Output Properly
     const aiResponse =
       response.data.candidates[0]?.content?.parts?.[0]?.text.trim() || "";
 
@@ -55,10 +53,7 @@ const getMacrosFromAI = async (foodLabel) => {
 
     return macros;
   } catch (error) {
-    console.error(
-      "❌ Error fetching macros from AI:",
-      error.response?.data || error.message
-    );
+    console.error("❌ Error fetching macros from AI:", error.message);
     throw new Error("Failed to retrieve macros");
   }
 };
@@ -118,7 +113,6 @@ const uploadFoodImg = async (req, res) => {
           return res.status(404).json({ error: "No labels found in image" });
         }
 
-        // ✅ Find the label with the highest topicality
         highestTopicalityLabel = labels.reduce((max, label) =>
           label.topicality > max.topicality ? label : max
         ).description;
@@ -131,16 +125,7 @@ const uploadFoodImg = async (req, res) => {
 
       console.log("✅ Highest Topicality Label:", highestTopicalityLabel);
 
-      // ✅ Validate and Extract `mealType`
-      //   const validMealTypes = ["breakfast", "lunch", "dinner"];
       const mealType = fields.mealType;
-
-      //   if (!mealType || !validMealTypes.includes(mealType)) {
-      //     return res.status(400).json({
-      //       error:
-      //         "Invalid meal type. Must be 'breakfast', 'lunch', or 'dinner'.",
-      //     });
-      //   }
 
       // ✅ Get Macros from Google Gemini AI
       let macros;
@@ -159,19 +144,21 @@ const uploadFoodImg = async (req, res) => {
       const existingFood = await knex("food_items")
         .where({ name: highestTopicalityLabel })
         .first();
+
       if (existingFood) {
         foodId = existingFood.id;
       } else {
-        const newFood = await knex("food_items").insert({
-          name: highestTopicalityLabel,
-          calories: macros.calories,
-          protein: macros.protein,
-          carbs: macros.carbs,
-          fat: macros.fat,
-          amount: 100,
-        });
-
-        foodId = newFood[0];
+        const [newFood] = await knex("food_items")
+          .insert({
+            name: highestTopicalityLabel,
+            calories: macros.calories,
+            protein: macros.protein,
+            carbs: macros.carbs,
+            fat: macros.fat,
+            amount: 100,
+          })
+          .returning("id"); // ✅ Correctly returning the new food item's ID
+        foodId = newFood.id;
       }
 
       // ✅ Insert food into `meal_logs`

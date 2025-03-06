@@ -7,16 +7,25 @@ const getAllFoodItems = async (_req, res) => {
     const data = await knex("food_items");
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error retrieving food items: ${err}`);
+    console.error("Error retrieving food items:", err);
+    res.status(400).send(`Error retrieving food items: ${err.message}`);
   }
 };
 
 const getFoodItem = async (req, res) => {
   try {
-    const data = await knex("food_items").where({ id: req.params.id });
+    const data = await knex("food_items").where({ id: req.params.id }).first();
+
+    if (!data) {
+      return res
+        .status(404)
+        .send(`Food item with ID ${req.params.id} not found.`);
+    }
+
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error retrieving food item: ${err}`);
+    console.error("Error retrieving food item:", err);
+    res.status(400).send(`Error retrieving food item: ${err.message}`);
   }
 };
 
@@ -31,6 +40,11 @@ const addFoodItem = async (req, res) => {
       amount = 100,
       mealType,
     } = req.body;
+
+    // Validate the input
+    if (!name || !calories || !protein || !carbs || !fat) {
+      return res.status(400).json({ error: "Missing required fields." });
+    }
 
     // Check if the food item already exists in the food_items table
     let food = await knex("food_items").where({ name }).first();
@@ -60,7 +74,7 @@ const addFoodItem = async (req, res) => {
       fat: food.fat,
       amount: amount,
       meal_type: mealType,
-      date: new Date().toLocaleDateString("en-CA"),
+      date: new Date().toISOString().split("T")[0], // ISO format, 'YYYY-MM-DD'
     });
 
     // Send back the food name with the success message

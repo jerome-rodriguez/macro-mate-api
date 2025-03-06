@@ -5,10 +5,10 @@ import axios from "axios";
 
 const getAllMealLogs = async (_req, res) => {
   try {
-    const data = await knex("meal_logs");
+    const data = await knex("meal_logs").select("*");
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error retrieving meal logs: ${err}`);
+    res.status(400).send(`Error retrieving meal logs: ${err.message}`);
   }
 };
 
@@ -17,20 +17,20 @@ const getMealLogsOfADate = async (req, res) => {
     const data = await knex("meal_logs").where({ date: req.params.date });
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error retrieving meal logs: ${err}`);
+    res.status(400).send(`Error retrieving meal logs: ${err.message}`);
   }
 };
 
 const deleteMealLogsOfADate = async (req, res) => {
   try {
     const { date } = req.params;
-    const data = await knex("meal_logs").where({ date: req.params.date });
+    const data = await knex("meal_logs").where({ date });
 
     await knex("meal_logs").where({ date }).del();
 
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error deleting meal logs: ${err}`);
+    res.status(400).send(`Error deleting meal logs: ${err.message}`);
   }
 };
 
@@ -39,7 +39,7 @@ const getMealLog = async (req, res) => {
     const data = await knex("meal_logs").where({ id: req.params.id }).first();
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error retrieving meal log: ${err}`);
+    res.status(400).send(`Error retrieving meal log: ${err.message}`);
   }
 };
 
@@ -48,7 +48,6 @@ const editMealLog = async (req, res) => {
     const { id } = req.params;
     const { amount, meal_type, calories, protein, carbs, fat } = req.body;
 
-    // Fetch existing meal log
     const mealLog = await knex("meal_logs").where({ id }).first();
     if (!mealLog) {
       return res.status(404).json({ error: `Meal log not found` });
@@ -58,7 +57,6 @@ const editMealLog = async (req, res) => {
       meal_type: meal_type ?? mealLog.meal_type,
     };
 
-    // If any macros (calories, protein, carbs, fat) are edited, disallow editing of amount
     if (calories || protein || carbs || fat) {
       if (amount) {
         return res
@@ -75,7 +73,6 @@ const editMealLog = async (req, res) => {
       };
     }
 
-    // If amount is updated, dynamically recalculate macros using Gemini API
     if (amount && amount !== mealLog.amount) {
       const prompt = `A reliable database claims ${mealLog.amount}g of ${mealLog.name} contains:
       - Calories: ${mealLog.calories} kcal
@@ -99,7 +96,6 @@ const editMealLog = async (req, res) => {
         { headers: { "Content-Type": "application/json" } }
       );
 
-      // Extract raw text response
       const responseText =
         geminiResponse.data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
@@ -108,13 +104,12 @@ const editMealLog = async (req, res) => {
       let newMacros = {};
 
       try {
-        newMacros = JSON.parse(cleanResponseText); // Attempt to parse the cleaned response
+        newMacros = JSON.parse(cleanResponseText);
       } catch (error) {
-        console.error("Error parsing response:", error.message); // More detailed error log
+        console.error("Error parsing response:", error.message);
         return res.status(500).json({ error: "Error parsing AI response" });
       }
 
-      // Validate response
       if (
         newMacros.calories !== undefined &&
         newMacros.protein !== undefined &&
@@ -133,18 +128,15 @@ const editMealLog = async (req, res) => {
         return res.status(500).json({ error: "Invalid AI response format" });
       }
     } else {
-      // If no amount is provided, allow updating the meal type and macros (calories, protein, carbs, fat)
-      updatedFields.amount = mealLog.amount; // Keep the original amount if it's not being updated
+      updatedFields.amount = mealLog.amount;
     }
 
-    // Update meal log in the database
     await knex("meal_logs").where({ id }).update(updatedFields);
 
-    // Return updated meal log
     const updatedMealLog = await knex("meal_logs").where({ id }).first();
     res.status(200).json(updatedMealLog);
   } catch (err) {
-    console.error("Error:", err.message); // Log the full error for debugging
+    console.error("Error:", err.message);
     res.status(500).json({ error: `Error updating meal log: ${err.message}` });
   }
 };
@@ -158,7 +150,7 @@ const deleteMealLog = async (req, res) => {
 
     res.status(200).json(data);
   } catch (err) {
-    res.status(400).send(`Error deleting meal log: ${err}`);
+    res.status(400).send(`Error deleting meal log: ${err.message}`);
   }
 };
 

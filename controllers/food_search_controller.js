@@ -47,30 +47,31 @@ const addFoodItem = async (req, res) => {
 
     if (!food) {
       // If food doesn't exist, insert it into the food_items table
-      const [insertedFoodId] = await knex("food_items").insert({
-        name,
-        calories,
-        protein,
-        carbs,
-        fat,
-        amount,
-      });
+      const [insertedFood] = await knex("food_items")
+        .insert({
+          name,
+          calories,
+          protein,
+          carbs,
+          fat,
+          amount,
+        })
+        .returning("*");
 
-      // Retrieve the inserted food item
-      food = await knex("food_items").where({ id: insertedFoodId }).first();
+      food = insertedFood;
     }
 
     // Insert into meal_logs using the food item's ID
     await knex("meal_logs").insert({
-      food_id: food.id, // Use the existing or newly inserted food item's ID
+      food_id: food.id,
       name: food.name,
       calories: food.calories,
       protein: food.protein,
       carbs: food.carbs,
       fat: food.fat,
-      amount: amount,
+      amount,
       meal_type: mealType,
-      date: new Date().toLocaleDateString("en-CA"),
+      date: new Date().toISOString().split("T")[0], // Format as YYYY-MM-DD
     });
 
     // Send back the food name with the success message
